@@ -40,3 +40,8 @@ data/**/*.dbf
 data/**/*.shx
 data/**/*.prj
 data/**/*.cpg
+
+# Document generation and MS Word outputs
+*.docx
+convert_to_docx.py
+style_docx.py
