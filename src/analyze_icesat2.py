@@ -143,11 +143,11 @@ def run_icesat2_analysis():
         all_years.append(r['year'])
         relative_surf.append(r['median_dz'])
         
-    print("\n=== Combined Calibrated 2015-2022 Elevation Change Time Series ===")
+    print(f"\n=== Combined Calibrated 2015-{max(all_years)} Elevation Change Time Series ===")
     for y, v in zip(all_years, relative_surf):
         print(f"  Year {y}: {v:+.3f} meters (relative to 2015 baseline)")
         
-    # Plot the 7-year time series
+    # Plot the time series
     fig, ax = plt.subplots(figsize=(6, 5))
     
     # Sort by year
@@ -162,7 +162,8 @@ def run_icesat2_analysis():
     slope, intercept = np.polyfit(years_plot, surf_plot, 1)
     ax.plot(years_plot, slope * years_plot + intercept, color='darkorange', linestyle=':', linewidth=1.5, label=f"Trend ({slope:+.3f} m/yr)")
     
-    ax.set_title("Barnes Ice Cap: 7-Year Surface Elevation Change (2015-2022)\n(Combined MCoRDS & ICESat-2 Altimetry)", fontsize=10, fontweight="bold")
+    ax.set_title(f"Barnes Ice Cap: Surface Elevation Change (2015-{max(all_years)})\n(Combined MCoRDS & ICESat-2 Altimetry)", fontsize=10, fontweight="bold")
+
     ax.set_xlabel("Year", fontsize=9)
     ax.set_ylabel("Elevation Change (meters relative to 2015)", fontsize=9)
     ax.set_xticks(sorted(all_years))

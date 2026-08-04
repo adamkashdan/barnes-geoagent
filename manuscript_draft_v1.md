@@ -13,7 +13,7 @@ Because the Barnes Ice Cap lacks a pre-existing high-resolution raster DEM for t
 
 To validate the radar sounding surface elevations, we co-locate MCoRDS with high-precision IceBridge ATM L2 laser altimetry profiles across 82,569 overlapping points. We detect a systematic instrument calibration shift of **$+2.60$ m** (median, ATM - MCoRDS) and highly consistent track correlation (std dev $1.75$ m). 
 
-Integrating ICESat-2 satellite laser track passes from 2018 and 2022 with our 2015 baseline reveals a median surface lowering of **$-0.23$ m** by 2018 and **$-4.38$ m** by 2022. This demonstrates an overall decadal thinning rate of **$-0.625$ m a$^{-1}$** along overlapping tracks, reflecting accelerated ablation. 
+To map continuous elevation changes, we compare the reconstructed 2015 DEM to a new 2022 regional DEM raster across 59,389 overlapping pixels, which shows a median surface lowering of **$-0.548$ m** over the 7-year interval. Integrating ICESat-2 satellite laser track passes from 2018 and 2022 with our 2015 baseline reveals a median surface lowering of **$-0.23$ m** by 2018 and **$-4.38$ m** by 2022. This demonstrates an overall decadal thinning rate of **$-0.625$ m a$^{-1}$** along overlapping tracks, reflecting accelerated ablation. 
 
 Finally, we model the vertical ice velocity profile under the Shallow Ice Approximation (SIA) using Glen's flow law. Incorporating a soft basal Pleistocene Ice Layer (PIL) with a fluidity enhancement factor ($E = 3.5$) shows that shear deformation is heavily concentrated in the lowermost 12% of the ice column, which enhances sliding velocities and highlights the role of basal stratigraphy in regulating glacier response to climate forcing.
 
@@ -92,6 +92,15 @@ Applying this correction yields a highly consistent spatial fit, with a standard
 | Pearson Correlation Coefficient ($r$) | $0.99912$ |
 | Root Mean Squared Error (RMSE) | $9.378$ m |
 
+![DEM Topography](dem_2015_2016_topography.png)
+*Fig. 1. Topographic map of the Barnes Ice Cap from the contours-derived 2015 DEM.*
+
+![Glacier Elevation Change Map](glacier_elevation_change_map.png)
+*Fig. 2. Spatial distribution of elevation difference (dz = z_dem - z_2015) between the 2015 contours DEM and the 2015 MCoRDS track points.*
+
+![Elevation Comparison Scatter](glacier_elevation_comparison_scatter.png)
+*Fig. 3. Scatter plot comparison between 2015 MCoRDS and 2015 contours DEM elevations.*
+
 ---
 
 ### 3.2 MCoRDS vs. ATM L2 Sensor Validation
@@ -108,6 +117,15 @@ The low standard deviation of **$1.748$ m** demonstrates the high precision and 
 | Standard Deviation of Difference | $1.748$ m |
 | Root Mean Squared Error (RMSE) | $3.082$ m |
 
+![ATM Validation Histogram](historical_glacier_trends.png)
+*Fig. 4. Distribution of elevation differences between ATM L2 and MCoRDS L2 surface elevations over the Barnes Ice Cap in 2015.*
+
+![ATM Validation Map](historical_elevation_change_map.png)
+*Fig. 5. Spatial distribution of elevation differences (z_atm - z_mcoords) along overlapping tracks in 2015.*
+
+![ATM Thickness Map](historical_thickness_change_map.png)
+*Fig. 6. MCoRDS ice thickness mapped along the overlapping ATM track locations in 2015.*
+
 ---
 
 ### 3.3 7-Year Surface Elevation Change (2015–2022)
@@ -122,12 +140,31 @@ Between 2015 and 2018, the surface thinned by a median of **$-0.232$ m**. By 202
 | 2018 | 201 | $-0.232$ | $-0.329$ | $1.563$ |
 | 2022 | 182 | $-4.377$ | $-4.604$ | $3.156$ |
 
+![7-Year Altimetry Trend](icesat2_12year_trend.png)
+*Fig. 7. Combined MCoRDS and ICESat-2 surface elevation change time series (2015-2022) showing glacier thinning.*
+
 ---
 
 ### 3.4 SIA Basal Shear Velocity Profiles
-Solving the SIA velocity equations for a deep track point ($H = 400$ m, $H_p = 48$ m) illustrates the impact of the basal Pleistocene Ice Layer on ice flow (Fig. 1). 
+Solving the SIA velocity equations for a deep track point ($H = 400$ m, $H_p = 48$ m) illustrates the impact of the basal Pleistocene Ice Layer on ice flow (Fig. 9). 
 
 Because the fluidity enhancement factor ($E = 3.5$) is restricted to the lowermost 12% of the ice column ($z/H \le 0.12$), the shear strain rate is heavily concentrated near the bed. This results in a sharp velocity transition at the PIL boundary, significantly increasing sliding velocity and suggesting that basal stratigraphic properties are a major driver of localized ice dynamics.
+
+![PIL Distribution Map](pil_distribution_map.png)
+*Fig. 8. Estimated Pleistocene Ice Layer (PIL) thickness distribution map.*
+
+![PIL Profile](pil_velocity_profile.png)
+*Fig. 9. Normalized vertical velocity profiles u(z) comparing Holocene-only ice (black dashed) and ice with a soft basal PIL (purple).*
+
+---
+
+### 3.5 Continuous Elevation Change (2015–2022) Comparison
+To evaluate the spatial distribution of surface elevation change across the entire glaciated area, we performed a continuous pixel-by-pixel grid comparison between the 2015 contours-derived DEM and the new 2022 regional DEM. Both datasets were aligned to the same orthometric height system (CGVD2013).
+
+Reprojecting and resampling the high-resolution 2022 DEM onto the 300m grid of the 2015 DEM across all 59,389 overlapping glaciated pixels revealed a median surface elevation change of **$-0.548$ meters** (mean: $-0.485$ meters, standard deviation: $9.495$ meters). The spatial distribution of change (Fig. 10) confirms widespread regional thinning, especially along the lower-elevation margins, while the high-altitude dome tracks show vertical stability.
+
+![DEM 2015-2022 Difference Map](glacier_dem_change_2015_2022.png)
+*Fig. 10. Spatial distribution of continuous surface elevation change (dz = z_2022 - z_2015) across the glaciated grid cells.*
 
 ---
 

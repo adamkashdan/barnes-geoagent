@@ -54,6 +54,23 @@ def _load_data() -> pd.DataFrame:
         lambda H: min(0.12 * H, 80.0) if H > 150.0 and not np.isnan(H) else 0.0
     )
 
+    # Load 2022 DEM values if available
+    dem_2022_path = os.path.join(BASE_DIR, "data", "DEM_2022", "barnes_dem_2022.tif")
+    if os.path.exists(dem_2022_path):
+        import rasterio
+        from rasterio.warp import transform
+        xs, ys = transform('EPSG:4326', 'ESRI:102008', df['LON'].tolist(), df['LAT'].tolist())
+        with rasterio.open(dem_2022_path) as s22:
+            coords = list(zip(xs, ys))
+            elevs = []
+            for val in s22.sample(coords):
+                v = float(val[0])
+                # Subtract 6.81m geoid height to align orthometric 2022 DEM to WGS84 ellipsoidal datum of MCoRDS 2015
+                elevs.append(v - 6.81 if v > -100 else np.nan)
+            df['surface_elevation_2022'] = elevs
+    else:
+        df['surface_elevation_2022'] = np.nan
+
     _DF_CACHE = df
     return df
 
@@ -99,6 +116,7 @@ def query_point_data(lat: float, lon: float) -> dict:
         "distance_meters": distance_m,
         "ice_thickness": float(row["ice_thickness"]) if not np.isnan(row["ice_thickness"]) else "No Data",
         "surface_elevation": float(row["surface_elevation"]) if not np.isnan(row["surface_elevation"]) else "No Data",
+        "surface_elevation_2022": float(row["surface_elevation_2022"]) if not np.isnan(row["surface_elevation_2022"]) else "No Data",
         "bedrock_elevation": float(row["bedrock_elevation"]) if not np.isnan(row["bedrock_elevation"]) else "No Data",
         "pleistocene_ice_thickness": float(row["pleistocene_ice_thickness"]) if not np.isnan(row["pleistocene_ice_thickness"]) else "No Data",
         "warning": warning
@@ -166,7 +184,7 @@ def generate_map_image(dataset: str, bbox: Optional[list] = None) -> dict:
     # Choose colormap based on variable type
     if dataset == "ice_thickness":
         cmap = "Blues"
-    elif dataset == "surface_elevation":
+    elif dataset in ["surface_elevation", "surface_elevation_2022"]:
         cmap = "terrain"
     elif dataset == "pleistocene_ice_thickness":
         cmap = "Purples"
@@ -176,7 +194,8 @@ def generate_map_image(dataset: str, bbox: Optional[list] = None) -> dict:
     fig, ax = plt.subplots(figsize=(6, 5))
     sc = ax.scatter(subset["LON"], subset["LAT"], c=subset[dataset], cmap=cmap, s=2, alpha=0.8)
     
-    ax.set_title(f"Barnes Ice Cap 2015: {label}\n({unit})", fontsize=10, fontweight="bold")
+    year_str = "2022" if dataset == "surface_elevation_2022" else "2015"
+    ax.set_title(f"Barnes Ice Cap {year_str}: {label}\n({unit})", fontsize=10, fontweight="bold")
     ax.set_xlabel("Longitude (deg W)", fontsize=8)
     ax.set_ylabel("Latitude (deg N)", fontsize=8)
     ax.grid(True, linestyle="--", alpha=0.5)

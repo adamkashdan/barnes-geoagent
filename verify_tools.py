@@ -13,23 +13,23 @@ print("\n=== Testing query_point_data (at center of Barnes Ice Cap) ===")
 pt_res = query_point_data(70.278, -73.400)
 print(pt_res)
 
-print("\n=== Testing compute_zonal_statistics for PIL ===")
+print("\n=== Testing compute_zonal_statistics for 2022 Elevation ===")
 bbox = [-73.5, 69.8, -73.0, 70.3]
-stats_pil = compute_zonal_statistics("pleistocene_ice_thickness", bbox)
-print("PIL stats inside bbox:", stats_pil)
+stats_22 = compute_zonal_statistics("surface_elevation_2022", bbox)
+print("2022 surface stats inside bbox:", stats_22)
 
-print("\n=== Testing compare_variables ===")
-compare_res = compare_variables("surface_elevation", "pleistocene_ice_thickness", bbox)
+print("\n=== Testing compare_variables (2015 vs 2022 elevation) ===")
+compare_res = compare_variables("surface_elevation", "surface_elevation_2022", bbox)
 print("Comparison results:", compare_res)
 
-print("\n=== Testing generate_map_image for PIL ===")
-map_res = generate_map_image("pleistocene_ice_thickness", bbox)
+print("\n=== Testing generate_map_image for 2022 surface elevation ===")
+map_res = generate_map_image("surface_elevation_2022", bbox)
 if "image_base64" in map_res:
-    print("PIL Map generated successfully. Base64 length:", len(map_res["image_base64"]))
-    # Save the generated image as a check to workspace
-    with open("test_pil_map.png", "wb") as f:
+    print("2022 Surface Map generated successfully. Base64 length:", len(map_res["image_base64"]))
+    with open("test_surface_2022_map.png", "wb") as f:
         import base64
         f.write(base64.b64decode(map_res["image_base64"]))
-    print("Saved test_pil_map.png to workspace root.")
+    print("Saved test_surface_2022_map.png to workspace root.")
 else:
     print("Error generating map:", map_res)
+
