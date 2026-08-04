@@ -40,6 +40,7 @@ data/**/*.dbf
 data/**/*.shx
 data/**/*.prj
 data/**/*.cpg
+data/**/*.qmd
 
 # Document generation and MS Word outputs
 *.docx
