@@ -133,3 +133,14 @@ Models the vertical velocity profile $u(z)$ under the Shallow Ice Approximation 
 * *"Calculate the zonal statistics of the surface elevation in the bounding box [-73.5, 69.8, -73.0, 70.3]."*
 * *"Is there a correlation between surface elevation and ice thickness in the central part of the ice cap?"*
 * *"Generate a satellite NDSI map for August 7, 2022."*
+
+---
+
+## License & Copyright
+
+Copyright (c) 2026 Adam Kashdan. All rights reserved.
+
+This repository contains draft source code associated with an upcoming scientific publication. The code is provided solely for reference and academic peer-review purposes.
+
+See the [LICENSE](LICENSE) file for full copyright terms and restrictions.
+
