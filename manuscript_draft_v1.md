@@ -13,7 +13,7 @@ Because the Barnes Ice Cap lacks a pre-existing high-resolution raster DEM for t
 
 To validate the radar sounding surface elevations, we co-locate MCoRDS with high-precision IceBridge ATM L2 laser altimetry profiles across 82,569 overlapping points. We detect a systematic instrument calibration shift of **$+2.60$ m** (median, ATM - MCoRDS) and highly consistent track correlation (std dev $1.75$ m). 
 
-To map continuous elevation changes, we compare the reconstructed 2015 DEM to a new 2022 regional DEM raster across 59,389 overlapping pixels, which shows a median surface lowering of **$-0.548$ m** over the 7-year interval. Integrating ICESat-2 satellite laser track passes from 2018 and 2022 with our 2015 baseline reveals a median surface lowering of **$-0.23$ m** by 2018 and **$-4.38$ m** by 2022. This demonstrates an overall decadal thinning rate of **$-0.625$ m a$^{-1}$** along overlapping tracks, reflecting accelerated ablation. 
+To map continuous elevation changes, we compare the reconstructed 2015 DEM to a new 2022 regional DEM raster across 59,389 overlapping pixels, which shows a median surface lowering of **$-0.548$ m** over the 7-year interval. Integrating ICESat-2 satellite laser track passes from 2018, 2022, 2023, and 2024 with our 2015 baseline reveals a median surface lowering of **$-0.23$ m** in 2018, **$-4.38$ m** in 2022, **$-5.37$ m** in 2023, and **$-7.20$ m** in 2024. This demonstrates an overall 9-year thinning rate of **$-0.800$ m a$^{-1}$** along overlapping tracks, reflecting accelerated ablation. 
 
 Finally, we model the vertical ice velocity profile under the Shallow Ice Approximation (SIA) using Glen's flow law. Incorporating a soft basal Pleistocene Ice Layer (PIL) with a fluidity enhancement factor ($E = 3.5$) shows that shear deformation is heavily concentrated in the lowermost 12% of the ice column, which enhances sliding velocities and highlights the role of basal stratigraphy in regulating glacier response to climate forcing.
 
@@ -128,10 +128,10 @@ The low standard deviation of **$1.748$ m** demonstrates the high precision and 
 
 ---
 
-### 3.3 7-Year Surface Elevation Change (2015–2022)
-The co-located altimetry time-series combining MCoRDS (2015) and ICESat-2 (2018, 2022) reveals a clear and accelerating glacier thinning trend. 
+### 3.3 Multi-Year Surface Elevation Change (2015–2024)
+The co-located altimetry time-series combining MCoRDS (2015) and ICESat-2 (2018, 2022, 2023, 2024) reveals a clear and accelerating glacier thinning trend. 
 
-Between 2015 and 2018, the surface thinned by a median of **$-0.232$ m**. By 2022, the surface lowering reached a median of **$-4.377$ m**, corresponding to an average ablation rate of **$-0.625$ m a$^{-1}$** (Table 3).
+Between 2015 and 2018, the surface thinned by a median of **$-0.232$ m**. Surface lowering accelerated significantly over the next few years, reaching a median of **$-4.377$ m** by 2022, **$-5.371$ m** by 2023, and **$-7.197$ m** by 2024. This corresponds to an average 9-year thinning rate of **$-0.800$ m a$^{-1}$** along the overlapping dome flight tracks (Table 3), showing rapid ablation.
 
 **Table 3. Combined Altimetry Change Time Series (relative to 2015 MCoRDS)**
 | Year | Co-Located Points ($N$) | Median Elevation Change ($dz$, meters) | Mean $dz$ (meters) | Std Dev of $dz$ (meters) |
@@ -139,9 +139,11 @@ Between 2015 and 2018, the surface thinned by a median of **$-0.232$ m**. By 202
 | 2015 | Baseline | $0.000$ | $0.000$ | $0.000$ |
 | 2018 | 201 | $-0.232$ | $-0.329$ | $1.563$ |
 | 2022 | 182 | $-4.377$ | $-4.604$ | $3.156$ |
+| 2023 | 1839 | $-5.371$ | $-5.442$ | $3.554$ |
+| 2024 | 1339 | $-7.197$ | $-7.021$ | $3.849$ |
 
-![7-Year Altimetry Trend](icesat2_12year_trend.png)
-*Fig. 7. Combined MCoRDS and ICESat-2 surface elevation change time series (2015-2022) showing glacier thinning.*
+![Multi-Year Altimetry Trend](icesat2_12year_trend.png)
+*Fig. 7. Combined MCoRDS and ICESat-2 surface elevation change time series (2015-2024) showing glacier thinning.*
 
 ---
 
