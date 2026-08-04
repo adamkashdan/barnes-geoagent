@@ -1,0 +1,52 @@
+# Semantic layer: makes raw Barnes Ice Cap CSV radar datasets legible to an LLM agent.
+#
+# Each entry describes a dataset variable the way you'd explain it to a colleague:
+# what it is, what unit it's in, and what it's useful for. The agent reads
+# this file (not the raw points) to decide which dataset/variable a tool call
+# should operate on.
+
+datasets:
+  ice_thickness:
+    csv_column: "THICK"
+    label: "Ice Thickness"
+    unit: "meters"
+    description: >
+      Ice thickness measurements obtained from MCoRDS airborne radar.
+      Useful for determining the depth of the glacier, finding maximum ice
+      thickness zones, and estimating total ice volume. Valid range: 0 to 600 meters.
+    value_range: [0, 600]
+
+  surface_elevation:
+    csv_column: "Actual surface" # matches column in CSV directly, computed as ELEVATION - SURFACE range
+    label: "Surface Elevation"
+    unit: "meters above sea level"
+    description: >
+      Glacier surface elevation derived from GPS aircraft altitude minus radar range to the ice surface.
+      Useful for elevation profiling and identifying glacier peaks and flow direction. Valid range: 0 to 1200 meters.
+    value_range: [0, 1200]
+
+  bedrock_elevation:
+    csv_column: "Actual ice bottom" # matches column in CSV directly, computed as ELEVATION - BOTTOM range
+    label: "Bedrock Elevation"
+    unit: "meters above sea level"
+    description: >
+      Bedrock elevation beneath the glacier, derived from GPS altitude minus radar range to bedrock.
+      Useful for subglacial topography analysis and determining the base structure of the ice cap. Valid range: -200 to 1200 meters.
+    value_range: [-200, 1200]
+
+  pleistocene_ice_thickness:
+    label: "Pleistocene Ice Layer (PIL) Thickness"
+    unit: "meters"
+    description: >
+      Estimated thickness of the basal Pleistocene ice layer (ancient soft ice).
+      Calculated using a standard physical glaciological model where PIL exists in deep zones (H > 150m)
+      and is capped at a maximum thickness of 80 meters. Valid range: 0 to 80 meters.
+    value_range: [0, 80]
+
+region:
+  name: "Barnes Ice Cap (Baffin Island, Nunavut, Canada)"
+  bbox: [-74.77, 69.54, -71.80, 70.65]  # [west, south, east, north] -- matches dataset coordinate extent
+  crs: "EPSG:4326"
+  note: >
+    REAL OBSERVATIONS. Data derived from NASA Operation IceBridge MCoRDS L2
+    Airborne Ice Thickness measurements taken on May 7, 2015 (flight line IRMCR2_20150507_07).
