@@ -93,7 +93,7 @@ Applying this correction yields a highly consistent spatial fit, with a standard
 | Root Mean Squared Error (RMSE) | $9.378$ m |
 
 ![DEM Topography](dem_2015_2016_topography.png)
-*Fig. 1. Topographic map of the Barnes Ice Cap from the contours-derived 2015 DEM.*
+*Fig. 1. Topographic map of the Barnes Ice Cap from the contours-derived 2015 DEM, showing the 2015 contours-derived boundary (black) and the 2022 Sentinel-2-derived boundary (dashed red).*
 
 ![Glacier Elevation Change Map](glacier_elevation_change_map.png)
 *Fig. 2. Spatial distribution of elevation difference (dz = z_dem - z_2015) between the 2015 contours DEM and the 2015 MCoRDS track points.*

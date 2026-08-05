@@ -37,8 +37,10 @@ def run_dem_analysis():
         print(f"Error: Missing DEM TIFF or boundary Shapefile in {DEM_DIR}")
         return
         
-    print("Loading glacier boundary shapefile...")
-    gdf = gpd.read_file(SHP_PATH)
+    print("Loading glacier boundary shapefiles (2015 and 2022)...")
+    gdf_2015 = gpd.read_file(SHP_PATH)
+    SHP_2022_PATH = os.path.join(DATA_DIR, "DEM_2022", "barnes_glacier_boundary_2022.shp")
+    gdf_2022 = gpd.read_file(SHP_2022_PATH)
     
     print("Opening 2015 DEM raster...")
     with rasterio.open(TIF_PATH) as src:
@@ -56,10 +58,13 @@ def run_dem_analysis():
         print("Generating DEM topography map...")
         fig, ax = plt.subplots(figsize=(7, 6))
         im = ax.imshow(dem_data, cmap="terrain", extent=dem_extent, origin="upper")
-        gdf.boundary.plot(ax=ax, color="black", linewidth=1.5, label="Glacier Boundary")
+        gdf_2015.boundary.plot(ax=ax, color="black", linewidth=1.5, label="Boundary (2015)")
+        gdf_2022.boundary.plot(ax=ax, color="red", linewidth=1.5, linestyle="--", label="Boundary (2022, Sentinel-2)")
+        
         ax.set_title("Barnes Ice Cap (2015): Digital Elevation Model (DEM)", fontsize=10, fontweight="bold")
         ax.set_xlabel("Easting (meters, North America Albers)", fontsize=8)
         ax.set_ylabel("Northing (meters, North America Albers)", fontsize=8)
+        ax.legend(loc="upper right", fontsize=8)
         ax.grid(True, linestyle="--", alpha=0.5)
         fig.colorbar(im, ax=ax, label="Elevation (m above sea level)")
         
