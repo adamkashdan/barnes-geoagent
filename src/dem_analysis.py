@@ -60,13 +60,14 @@ def run_dem_analysis():
         # Load MCoRDS data to interpolate bedrock elevation
         print("Loading MCoRDS bedrock elevations...")
         df_csv = pd.read_csv(CSV_PATH)
-        df_csv = df_csv.dropna(subset=["LAT", "LON", "Actual ice bottom"])
-        df_csv = df_csv[df_csv["Actual ice bottom"] > -9000]  # Filter out nodata filler values
+        df_csv = df_csv.dropna(subset=["LAT", "LON", "Actual surface", "THICK"])
+        df_csv = df_csv[(df_csv["Actual surface"] > -9000) & (df_csv["THICK"] >= 0)]
         
         # Project bedrock points to Albers
         print("Projecting bedrock track points...")
         bed_xs, bed_ys = transform('EPSG:4326', src.crs, df_csv['LON'].tolist(), df_csv['LAT'].tolist())
-        bed_zs = df_csv['Actual ice bottom'].tolist()
+        # Bed topography is surface elevation minus ice thickness
+        bed_zs = (df_csv['Actual surface'] - df_csv['THICK']).tolist()
         
         # Interpolate bedrock heights onto the regular grid
         print("Interpolating bedrock elevation using griddata...")
