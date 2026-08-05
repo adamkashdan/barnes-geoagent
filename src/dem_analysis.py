@@ -84,6 +84,12 @@ def run_dem_analysis():
         
         # Panel A: Surface Elevation
         im_a = axes[0].imshow(dem_data, cmap="terrain", extent=dem_extent, origin="upper")
+        
+        # Add topographic contour lines (every 100m)
+        levels = np.arange(200, 1200, 100)
+        contours = axes[0].contour(dem_data, levels=levels, extent=dem_extent, origin="upper", colors="black", linewidths=0.5, alpha=0.6)
+        axes[0].clabel(contours, inline=True, fmt="%d", fontsize=6, colors="black")
+        
         gdf_2015.boundary.plot(ax=axes[0], color="black", linewidth=1.5, label="Boundary (2015)")
         gdf_2022.boundary.plot(ax=axes[0], color="red", linewidth=1.5, linestyle="--", label="Boundary (2022, Sentinel-2)")
         axes[0].set_title("(a) Map of Barnes Ice Cap (2015 Surface DEM)", fontsize=10, fontweight="bold")
