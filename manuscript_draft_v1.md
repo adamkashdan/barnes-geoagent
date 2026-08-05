@@ -1,4 +1,4 @@
-# Spatial-Temporal Elevation Changes and Basal Shear Dynamics of the Barnes Ice Cap, Baffin Island: Insights from Reconstructed DEMs, ATM-Validated Radar Sounding, and ICESat-2 Altimetry (2015–2022)
+# Spatial-Temporal Elevation Changes and Basal Shear Dynamics of the Barnes Ice Cap, Baffin Island: Insights from Reconstructed DEMs, ATM-Validated Radar Sounding, and ICESat-2 Altimetry (2015–2024)
 
 **Adam Kashdan**$^1$, **Hazen Russell**$^2$  
 $^1$ TAV College, Montréal, Québec, Canada  
@@ -27,7 +27,7 @@ Airborne radar sounding provides high-resolution profiles of ice thickness and s
 This paper addresses these issues by:
 1. Reconstructing a continuous 2015 surface DEM raster from contour lines to act as a baseline geodetic reference.
 2. Validating the MCoRDS radar sounder surface elevations against high-precision IceBridge ATM L2 airborne laser altimetry.
-3. Constructing a 2015–2022 spatial-temporal surface elevation change dataset using ICESat-2 land ice altimetry.
+3. Constructing a 2015–2024 spatial-temporal surface elevation change dataset using ICESat-2 land ice altimetry.
 4. Modeling the basal shear deformation profile under the Shallow Ice Approximation (SIA) to evaluate the impact of a soft basal PIL on glacier flow.
 
 ---
@@ -38,7 +38,7 @@ This paper addresses these issues by:
 We utilize four primary datasets over the Barnes Ice Cap region (bounding box $[-74.77, 69.54, -71.80, 70.65]$):
 1. **MCoRDS L2 Ice Thickness (IRMCR2)**: Level 2 radar profiles containing latitude, longitude, UTC time, aircraft GPS elevation ($ELEVATION$), radar range to surface ($SURFACE$), and calculated ice thickness ($THICK$) from the May 7, 2015, campaign (flight line `IRMCR2_20150507_07`).
 2. **IceBridge ATM L2 Icessn Elevation (ILATM2)**: High-resolution surface elevation measurements collected on the same flight campaign using the Airborne Topographic Mapper (ATM) laser scanner.
-3. **ICESat-2 ATL06 Land Ice Height**: Satellite laser altimetry track profiles intersecting the Barnes Ice Cap in 2018 (October 17 and October 24) and 2022 (October 12).
+3. **ICESat-2 ATL06 Land Ice Height**: Satellite laser altimetry track profiles intersecting the Barnes Ice Cap in 2018 (October 17 and October 24), 2022 (October 12), 2023 (October 7, 11, and 15), and 2024 (October 5, 8, and 12).
 4. **Sentinel-2 Multi-spectral Imagery**: Used to verify surface features, snow lines, and glacier outlines for August 2022.
 
 ### 2.2 DEM Reconstruction from Contours
@@ -53,8 +53,8 @@ Using a $k$-dimensional tree (`cKDTree`), we matched each ATM point to the neare
 $$\Delta z = z_{atm} - z_{mcoords}$$
 where $z_{atm}$ is the ellipsoidal laser height and $z_{mcoords}$ is the ellipsoidal radar height. Extreme outliers ($|\Delta z| > 100$ m) were removed to filter out cloud reflections.
 
-### 2.4 Altimetry Time-Series (2015-2022)
-To map decadal surface changes, we integrated the ICESat-2 ATL06 land ice elevation datasets from October 2018 and October 2022. The 2015 MCoRDS ellipsoidal surface elevation was used as the baseline reference. 
+### 2.4 Altimetry Time-Series (2015-2024)
+To map decadal surface changes, we integrated the ICESat-2 ATL06 land ice elevation datasets from October 2018, October 2022, October 2023, and October 2024. The 2015 MCoRDS ellipsoidal surface elevation was used as the baseline reference. 
 
 Using a `cKDTree` search, we identified overlapping ICESat-2 track points within 100 meters of the MCoRDS track. The elevation difference was computed directly as:
 $$dz = z_{is2} - z_{mcoords}$$
@@ -192,7 +192,7 @@ As the ice cap thins and surface slope angles adjust in response to climate warm
 ## 5. Conclusions
 We have presented a multi-temporal geodetic analysis of the Barnes Ice Cap. Using a contours-derived 2015 DEM raster and co-located IceBridge ATM L2 laser altimetry, we validated the MCoRDS L2 radar surface elevations, identifying a $+2.60$ m sensor calibration offset and a standard deviation of $1.75$ m. 
 
-Integrating ICESat-2 altimetry from 2018 and 2022 revealed a surface lowering of **$-4.38$ m** over 7 years, representing a thinning rate of **$-0.625$ m a$^{-1}$**. 
+Integrating ICESat-2 altimetry from 2018, 2022, 2023, and 2024 revealed a surface lowering of **$-7.20$ m** over 9 years, representing a thinning rate of **$-0.800$ m a$^{-1}$**. 
 
 Finally, SIA modeling showed that a soft Pleistocene basal ice layer concentrates shear deformation in the lowest 12% of the ice column, highlighting the critical role of basal ice stratigraphy in controlling glacier flow velocity.
 
