@@ -152,6 +152,8 @@ Solving the SIA velocity equations for a deep track point ($H = 400$ m, $H_p = 4
 
 Because the fluidity enhancement factor ($E = 3.5$) is restricted to the lowermost 12% of the ice column ($z/H \le 0.12$), the shear strain rate is heavily concentrated near the bed. This results in a sharp velocity transition at the PIL boundary, significantly increasing sliding velocity and suggesting that basal stratigraphic properties are a major driver of localized ice dynamics.
 
+Our formulation of the Pleistocene Ice Layer (PIL) thickness as a basal layer capped at a maximum of 80 m aligns with the 3D full-Stokes modeling configuration of Gilbert and others (2016). In their work, a baseline enhancement factor of $E = 3.1$ was inferred along the South Dome cross section to match surface velocity observations. Our choice of $E = 3.5$ is highly consistent with these findings and reproduces a similar concentration of shear deformation in the lowermost portion of the ice column.
+
 ![PIL Distribution Map](pil_distribution_map.png)
 *Fig. 8. Estimated Pleistocene Ice Layer (PIL) thickness distribution map.*
 
@@ -178,14 +180,14 @@ The median $+6.81$ m offset detected between the contours DEM and the WGS84 MCoR
 This verification confirms that the contour lines provide a reliable topographic baseline for glacier surface change analysis when geodetically aligned.
 
 ### 4.2 Thinning Rates in Baffin Island Context
-The observed median thinning rate of **$-0.625$ m a$^{-1}$** on the Barnes Ice Cap between 2015 and 2022 represents a significant acceleration of mass loss compared to the historical 2013–2017 rates reported on the nearby Penny Ice Cap ($-0.294$ m a$^{-1}$). 
+The observed median track-based thinning rate of **$-0.800$ m a$^{-1}$** on the Barnes Ice Cap between 2015 and 2024 represents a significant acceleration of mass loss compared to the historical 1900–2010 average mass loss of $\sim -0.2$ to $-0.3$ m a$^{-1}$ equivalent (representing a total loss of 340 Gt or 17% of total ice mass from 1900 to 2010, as modeled by Gilbert and others, 2016). This rate is also higher than the historical 2013–2017 rates reported on the nearby Penny Ice Cap ($-0.294$ m a$^{-1}$). 
 
 This acceleration is consistent with recent decadal Arctic altimetry trends and highlights the extreme vulnerability of Baffin Island's low-altitude ice caps to rising summer air temperatures.
 
 ### 4.3 Glaciological Implications of Basal Soft Ice
 The concentration of shear deformation in the basal PIL has major implications for ice cap flow and stability. The enhanced fluidity of late Pleistocene ice, driven by fine grain sizes and high impurity content, acts as a lubricating layer near the bedrock. 
 
-As the ice cap thins and surface slope angles adjust in response to climate warming, the concentration of shear within the PIL may accelerate ice delivery to lower elevations, increasing calving rates and margin retreat.
+As shown by Gilbert and others (2016), the PIL primarily regulates ice flow in zones of significant basal shear stress. Because the Barnes Ice Cap has transitioned to a state where the equilibrium line altitude (ELA) frequently exceeds the summit, the ice cap has nearly lost its accumulation zone, and its mass balance is predominantly negative. In this context, enhanced deformation within the PIL acts to accelerate the delivery of remaining ice from the interior to the melting margins, hastening the eventual disappearance of this Laurentide Ice Sheet remnant.
 
 ---
 
@@ -204,7 +206,9 @@ We thank the NASA Operation IceBridge team and the National Snow and Ice Data Ce
 ---
 
 ## References
+* Gilbert, A., Flowers, G. E., Miller, G. H., Refsnider, K. A., Young, N. E., and Radić, V. (2016). Sensitivity of Barnes Ice Cap, Baffin Island, Canada, to climate state and internal dynamics. *Journal of Geophysical Research: Earth Surface*, 121(8), 1516-1539.
 * Glen, J. W. (1955). The flow of polycrystalline ice. *Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences*, 228(1175), 519-538.
 * Kashdan, A., and Russell, H. (2026). Spatial-Temporal Dynamics and Basal Ice Properties of the Penny Ice Cap, Baffin Island. *Journal of Glaciology* (in draft).
 * Paterson, W. S. B. (1994). *The Physics of Glaciers* (3rd ed.). Pergamon Press.
 * Smith, B., et al. (2019). Land ice height retrieval algorithm for ICESat-2 (ATL06). *Remote Sensing of Environment*, 233, 111170.
+
