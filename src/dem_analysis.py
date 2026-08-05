@@ -83,7 +83,7 @@ def run_dem_analysis():
         fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)
         
         # Panel A: Surface Elevation
-        im_a = axes[0].imshow(dem_data, cmap="terrain", extent=dem_extent, origin="upper")
+        im_a = axes[0].imshow(dem_data, cmap="Blues_r", extent=dem_extent, origin="upper")
         
         # Add topographic contour lines (every 100m)
         levels = np.arange(200, 1200, 100)
