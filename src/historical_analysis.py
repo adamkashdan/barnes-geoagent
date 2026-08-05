@@ -153,7 +153,9 @@ Root Mean Squared Error (RMSE): {rmse:.3f} meters
     # Plot 3: historical_thickness_change_map.png (Thickness along overlapping tracks)
     print("Generating thickness map (historical_thickness_change_map.png)...")
     fig, ax = plt.subplots(figsize=(6, 5))
-    sc = ax.scatter(corr_15['x_proj'], corr_15['y_proj'], c=corr_15['ice_thickness'], cmap="Blues", s=2, alpha=0.8)
+    # Filter out invalid thickness values (-9999) for color mapping
+    valid_thick = corr_15[corr_15['ice_thickness'] >= 0]
+    sc = ax.scatter(valid_thick['x_proj'], valid_thick['y_proj'], c=valid_thick['ice_thickness'], cmap="Blues", s=2, alpha=0.8)
     gdf.boundary.plot(ax=ax, color="black", linewidth=1.5)
     ax.set_title("Barnes Ice Cap 2015: MCoRDS Ice Thickness\nat Overlapping ATM Tracks", fontsize=9, fontweight="bold")
     ax.set_xlabel("Easting (m, North America Albers)", fontsize=8)
