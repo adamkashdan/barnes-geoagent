@@ -38,7 +38,7 @@ This paper addresses these issues by:
 We utilize four primary datasets over the Barnes Ice Cap region (bounding box $[-74.77, 69.54, -71.80, 70.65]$):
 1. **MCoRDS L2 Ice Thickness (IRMCR2)**: Level 2 radar profiles containing latitude, longitude, UTC time, aircraft GPS elevation ($ELEVATION$), radar range to surface ($SURFACE$), and calculated ice thickness ($THICK$) from the May 7, 2015, campaign (flight line `IRMCR2_20150507_07`).
 2. **IceBridge ATM L2 Icessn Elevation (ILATM2)**: High-resolution surface elevation measurements collected on the same flight campaign using the Airborne Topographic Mapper (ATM) laser scanner.
-3. **ICESat-2 ATL06 Land Ice Height**: Satellite laser altimetry track profiles intersecting the Barnes Ice Cap in 2018 (October 17 and October 24), 2022 (October 12), 2023 (October 7, 11, and 15), and 2024 (October 5, 8, and 12).
+3. **ICESat-2 ATL06 Land Ice Height**: Satellite laser altimetry track profiles (Smith and others, 2019) intersecting the Barnes Ice Cap in 2018 (October 17 and October 24), 2022 (October 12), 2023 (October 7, 11, and 15), and 2024 (October 5, 8, and 12).
 4. **Sentinel-2 Multi-spectral Imagery**: Used to verify surface features, snow lines, and glacier outlines for August 2022.
 
 ### 2.2 DEM Reconstruction from Contours
@@ -61,7 +61,7 @@ $$dz = z_{is2} - z_{mcoords}$$
 Because both datasets use the WGS84 ellipsoid as their vertical datum, no geodetic datum corrections were required.
 
 ### 2.5 Shallow Ice Approximation (SIA) Flow Modeling
-We model the vertical velocity profile $u(z)$ under the Shallow Ice Approximation (SIA). According to Glen's flow law, the shear strain rate $\dot{\varepsilon}_{xz}$ is:
+We model the vertical velocity profile $u(z)$ under the Shallow Ice Approximation (SIA) (Paterson, 1994). According to Glen's flow law (Glen, 1955), the shear strain rate $\dot{\varepsilon}_{xz}$ is:
 $$\dot{\varepsilon}_{xz} = E A \tau^{n}$$
 where $A$ is the temperature-dependent ice fluidity, $n=3$ is the flow law exponent, $E$ is the fluidity enhancement factor, and $\tau$ is the shear stress:
 $$\tau(z) = \rho g (H - z) \sin\alpha$$
@@ -180,7 +180,7 @@ The median $+6.81$ m offset detected between the contours DEM and the WGS84 MCoR
 This verification confirms that the contour lines provide a reliable topographic baseline for glacier surface change analysis when geodetically aligned.
 
 ### 4.2 Thinning Rates in Baffin Island Context
-The observed median track-based thinning rate of **$-0.800$ m a$^{-1}$** on the Barnes Ice Cap between 2015 and 2024 represents a significant acceleration of mass loss compared to the historical 1900–2010 average mass loss of $\sim -0.2$ to $-0.3$ m a$^{-1}$ equivalent (representing a total loss of 340 Gt or 17% of total ice mass from 1900 to 2010, as modeled by Gilbert and others, 2016). This rate is also higher than the historical 2013–2017 rates reported on the nearby Penny Ice Cap ($-0.294$ m a$^{-1}$). 
+The observed median track-based thinning rate of **$-0.800$ m a$^{-1}$** on the Barnes Ice Cap between 2015 and 2024 represents a significant acceleration of mass loss compared to the historical 1900–2010 average mass loss of $\sim -0.2$ to $-0.3$ m a$^{-1}$ equivalent (representing a total loss of 340 Gt or 17% of total ice mass from 1900 to 2010, as modeled by Gilbert and others, 2016). This rate is also higher than the historical 2013–2017 rates reported on the nearby Penny Ice Cap ($-0.294$ m a$^{-1}$) (Kashdan and Russell, 2026). 
 
 This acceleration is consistent with recent decadal Arctic altimetry trends and highlights the extreme vulnerability of Baffin Island's low-altitude ice caps to rising summer air temperatures.
 
@@ -206,9 +206,14 @@ We thank the NASA Operation IceBridge team and the National Snow and Ice Data Ce
 ---
 
 ## References
-* Gilbert, A., Flowers, G. E., Miller, G. H., Refsnider, K. A., Young, N. E., and Radić, V. (2016). Sensitivity of Barnes Ice Cap, Baffin Island, Canada, to climate state and internal dynamics. *Journal of Geophysical Research: Earth Surface*, 121(8), 1516-1539.
-* Glen, J. W. (1955). The flow of polycrystalline ice. *Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences*, 228(1175), 519-538.
-* Kashdan, A., and Russell, H. (2026). Spatial-Temporal Dynamics and Basal Ice Properties of the Penny Ice Cap, Baffin Island. *Journal of Glaciology* (in draft).
-* Paterson, W. S. B. (1994). *The Physics of Glaciers* (3rd ed.). Pergamon Press.
-* Smith, B., et al. (2019). Land ice height retrieval algorithm for ICESat-2 (ATL06). *Remote Sensing of Environment*, 233, 111170.
+
+Gilbert A, Flowers GE, Miller GH, Refsnider KA, Young NE and Radić V (2016) Sensitivity of Barnes Ice Cap, Baffin Island, Canada, to climate state and internal dynamics. _Journal of Geophysical Research: Earth Surface_, 121(8), 1516-1539.
+
+Glen JW (1955) The flow of polycrystalline ice. _Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences_, 228(1175), 519-538.
+
+Kashdan A and Russell H (2026) Spatial-Temporal Dynamics and Basal Ice Properties of the Penny Ice Cap, Baffin Island. _Journal of Glaciology_ (in draft).
+
+Paterson WSB (1994) _The Physics of Glaciers_ (3rd ed.). Pergamon Press.
+
+Smith B and others (2019) Land ice height retrieval algorithm for ICESat-2 (ATL06). _Remote Sensing of Environment_, 233, 111170.
 
